@@ -1,0 +1,10 @@
+{
+  "name": "thetwittosphere_web",
+  "dependencies": {
+    "backbone": "^1.2.3",
+    "requirejs": "^2.1.22"
+  },
+  "devDependencies": {
+    "local-web-server": "^1.1.0"
+  }
+}
