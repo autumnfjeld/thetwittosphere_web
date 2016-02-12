@@ -2,6 +2,7 @@
   "name": "thetwittosphere_web",
   "dependencies": {
     "backbone": "^1.2.3",
+    "jquery": "^2.2.0",
     "requirejs": "^2.1.22"
   },
   "devDependencies": {
