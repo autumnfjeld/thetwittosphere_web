@@ -1,5 +1,13 @@
 {
   "name": "thetwittosphere_web",
+  "author": "Autumn Fjeld <autumnfjeld@gmail.com>",
+  "description": "Front end of full-stack project that searches for and returns twitter feed",
+  "repository": {
+    "type": "git"
+  },
+  "scripts": {
+    "start": "ws --port 8088 --spa app/index.html"
+  },
   "dependencies": {
     "backbone": "^1.2.3",
     "jquery": "^2.2.0",
