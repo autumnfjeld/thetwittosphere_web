@@ -3,8 +3,9 @@
 define([
   'jquery',
   'underscore', 
-  'backbone'
-  ], function($, _, Backbone){
+  'backbone',
+  'tweets/tweets.collection'
+  ], function($, _, Backbone, Tweets){
     var AppView = Backbone.View.extend({
 
       // bind to existing app container
@@ -28,9 +29,10 @@ define([
       createOnEnter: function(e) {
         if (e.keyCode != 13) return;
         console.log('input was', this.input.val());
+        Tweets.fetch();
       }
 
     });
-    
+
     return AppView;
 });
