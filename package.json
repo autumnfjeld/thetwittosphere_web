@@ -6,14 +6,11 @@
     "type": "git"
   },
   "scripts": {
-    "start": "ws --port 8088 --spa app/index.html"
+    "start": "http-server ./app"
   },
   "dependencies": {
     "backbone": "^1.2.3",
     "jquery": "^2.2.0",
     "requirejs": "^2.1.22"
-  },
-  "devDependencies": {
-    "local-web-server": "^1.1.0"
   }
 }
