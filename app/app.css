@@ -11,7 +11,7 @@ body {
 
 #app-container {
   width: 500px;
-  margin: 25% auto 0; 
+  margin: 15% auto 0; 
 }
 
 h1, h2 {
@@ -34,4 +34,9 @@ h1, h2 {
   border-radius: 4px;
   font-size: 20px;
   text-align: center;
+}
+
+#user-profile-box {
+  margin: 20px 0;
+  color: white;
 }
