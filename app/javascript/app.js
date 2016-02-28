@@ -11,6 +11,7 @@ define([
   ], function($, _, Backbone, Tweets, TweetView, Profile, ProfileView){
     var AppView = Backbone.View.extend({
 
+
       // bind to existing app container
       el: $("#app-container"),
 
@@ -20,11 +21,13 @@ define([
 
       initialize: function() {
 
-        _.bindAll(this, 'render', 'addTweetView');
+        _.bindAll(this, 'render', 'addProfileView', 'addTweetView');
 
         this.input = this.$("#screen-name-input");
 
         Tweets.bind('add', this.addTweetView);
+        Profile.bind('sync', this.addProfileView);
+
       },
 
       render: function() {
@@ -41,6 +44,7 @@ define([
           error: errorProfile
         });
 
+        //this automatically populates Tweets collection/Tweet models
         Tweets.fetch({
           data: {screen_name: screenName},
           error:  errorTweets
@@ -55,6 +59,10 @@ define([
         }
       },
 
+      addProfileView: function(profile){
+        var profileView = new ProfileView({model: profile});
+        this.$("#user-profile-box").append(profileView.render().el);
+      },
 
       addTweetView: function(tweet){
         var tweetView = new TweetView({model: tweet});
