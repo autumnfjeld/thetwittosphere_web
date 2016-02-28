@@ -1,6 +1,6 @@
 define(['jquery', 'underscore', 'backbone'],
   function($, _, Backbone){
-    var UserView = Backbone.View.extend({
+    var ProfileView = Backbone.View.extend({
 
       //basic test to get api data to view
       template: _.template("<p <%= name %> </p>"),
@@ -11,11 +11,12 @@ define(['jquery', 'underscore', 'backbone'],
       },
 
       render: function(){
+        console.log('user profile', this.model.toJSON);
         $(this.el).html(this.template(this.model.toJSON()));
         return this;
       }
 
     });
 
-    return UserView;
+    return ProfileView;
   });

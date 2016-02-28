@@ -6,9 +6,9 @@ define([
   'backbone',
   'tweets/tweets.collection',
   'tweets/tweet.view',
-  'profile/user',
-  'profile/user.view'
-  ], function($, _, Backbone, Tweets, TweetView, User, UserView){
+  'profile/profile',
+  'profile/profile.view'
+  ], function($, _, Backbone, Tweets, TweetView, Profile, ProfileView){
     var AppView = Backbone.View.extend({
 
       // bind to existing app container
@@ -36,9 +36,9 @@ define([
         var screenName = this.input.val();
         console.log('input was', screenName);
 
-        User.fetch({
+        Profile.fetch({
           data: {screen_name: screenName},
-          error: errorUser
+          error: errorProfile
         });
 
         Tweets.fetch({
@@ -46,14 +46,15 @@ define([
           error:  errorTweets
         });
 
-        function errorUser(err){
-          console.log('ERROR: User.fetch', err);
+        function errorProfile(err){
+          console.log('ERROR: Profile.fetch', err);
         }
 
         function errorTweets(err){
           console.log('ERROR: Tweets.fetch', err);
         }
       },
+
 
       addTweetView: function(tweet){
         var tweetView = new TweetView({model: tweet});
