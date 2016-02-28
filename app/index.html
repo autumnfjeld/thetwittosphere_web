@@ -6,6 +6,7 @@
     <meta name="The Twittosphere" content="">
     <meta name="Autumn Fjeld" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="app.css">    
     <!-- data-main attribute tells require.js to load scripts/main.js after require.js loads. -->    
     <script data-main="javascript/main" src="../node_modules/requirejs/require.js"> </script>    
   </head>
@@ -13,10 +14,16 @@
   <body>
 
     <div id="app-container">
-      <h2> Autumn's Test </h2>
-        <div id="">
-          <input id="twitter-screen-name" placeholder="Enter twitter username?" type="text" />
-        </div>  
+      <h1> Twittosphere </h1>
+      <h2> Get some tweets! </h2>
+
+      <div id="screen-name-input-box">
+        <input id="screen-name-input" placeholder="Enter twitter username" type="text" />
+      </div>  
+      <div id="user-profile-box">
+      </div>      
+      <div id="tweet-list-box">
+      </div>
     </div> 
 
   </body>
