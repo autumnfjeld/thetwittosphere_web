@@ -6,7 +6,7 @@
     "type": "git"
   },
   "scripts": {
-    "start": "http-server ./app"
+    "start": "http-server"
   },
   "dependencies": {
     "backbone": "^1.2.3",
