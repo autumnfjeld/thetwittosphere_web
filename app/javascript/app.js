@@ -5,19 +5,21 @@ define([
   'underscore', 
   'backbone',
   'tweets/tweets.collection',
-  'tweets/tweet.view'
-  ], function($, _, Backbone, Tweets, TweetView){
+  'tweets/tweet.view',
+  'profile/user',
+  'profile/user.view'
+  ], function($, _, Backbone, Tweets, TweetView, User, UserView){
     var AppView = Backbone.View.extend({
 
       // bind to existing app container
       el: $("#app-container"),
 
       events: {
-       "keypress #screen-name-input":  "fetchTweets",
+       "keypress #screen-name-input":  "fetchTwitInfo",
       },
 
       initialize: function() {
-        console.log('App.initialize');
+
         _.bindAll(this, 'render', 'addTweetView');
 
         this.input = this.$("#screen-name-input");
@@ -29,17 +31,26 @@ define([
         console.log('running render function');
       },
 
-      fetchTweets: function(e) {
+      fetchTwitInfo: function(e) {
         if (e.keyCode != 13) return;
         var screenName = this.input.val();
         console.log('input was', screenName);
 
-        Tweets.fetch({
+        User.fetch({
           data: {screen_name: screenName},
-          error:  error
+          error: errorUser
         });
 
-        function error(err){
+        Tweets.fetch({
+          data: {screen_name: screenName},
+          error:  errorTweets
+        });
+
+        function errorUser(err){
+          console.log('ERROR: User.fetch', err);
+        }
+
+        function errorTweets(err){
           console.log('ERROR: Tweets.fetch', err);
         }
       },
