@@ -4,8 +4,11 @@ A web app that allow users to search for a twitter handle (screen_name) and retu
 
 ####ToDos
 * Style user profile and tweets
-* Bundle code into app.js and vendor.js files
-* Allow users to filter tweets by number of re-tweets, with or without picture.
-* Lower priority todos
+* Get rid of node_modules organziation, Bundle code into app.js and vendor.js or seperate files (grunt or ???)
+* Allow users to filter tweets by 1)number of re-tweets 2) tweets with or without picture.
+  * Filter by retweet could be be done initially, and after collection exists
+* refresh UI on second entry
+* LikeToDos
   * UI feeback if twitter handle not found
-  * Domino like animation of appearing tweet list
+  * Domino like or cascade animation of appearing tweet list
+  * Responsive
