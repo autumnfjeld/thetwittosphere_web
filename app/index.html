@@ -6,7 +6,9 @@
     <meta name="The Twittosphere" content="">
     <meta name="Autumn Fjeld" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="app.css">    
+    <link rel="stylesheet" href="app.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <!-- data-main attribute tells require.js to load scripts/main.js after require.js loads. -->    
     <script data-main="javascript/main" src="../node_modules/requirejs/require.js"> </script>    
   </head>
@@ -19,6 +21,7 @@
 
       <div id="screen-name-input-box">
         <input id="screen-name-input" placeholder="Enter twitter username" type="text" />
+        <input id="retweet-filter-input" placeholder="Filter by # of retweets (optional)" type="number" />
       </div>  
       <div id="user-profile-box">
       </div>      
