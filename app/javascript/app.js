@@ -17,22 +17,23 @@ define([
 
       events: {
        "keypress #screen-name-input":  "fetchTwitInfo",
+       "keypress #retweet-filter-input":  "updateTweetView"
       },
 
       initialize: function() {
-
-        _.bindAll(this, 'render', 'addProfileView', 'addTweetView');
+        _.bindAll(this, 'render', 'addProfileView', 'addTweetView', 'updateTweetView');
 
         this.input = this.$("#screen-name-input");
+        this.filterByRetweet = this.$("#retweet-filter-input")
+        this.filterByPicutre = this.$("#retweet-filter-input")
 
         Tweets.bind('add', this.addTweetView);
         Profile.bind('sync', this.addProfileView);
-
       },
 
-      render: function() {
-        console.log('running render function');
-      },
+      // render: function() {
+      //   console.log('running render function');
+      // },
 
       fetchTwitInfo: function(e) {
         if (e.keyCode != 13) return;
@@ -61,13 +62,29 @@ define([
 
       addProfileView: function(profile){
         var profileView = new ProfileView({model: profile});
+        console.log('addProfileView', profileView);
         this.$("#user-profile-box").append(profileView.render().el);
       },
 
+      //should filtering be done at view or in collection?
       addTweetView: function(tweet){
         var tweetView = new TweetView({model: tweet});
         this.$("#tweet-list-box").append(tweetView.render().el);
-      }
+      },
+
+      // Add all items in the **Todos** collection at once.
+      updateTweetView: function() {
+        var minRetweet = this.filterByRetweet.val();  //assume people are looking for more-than
+        console.log('updateTweetView', minRetweet);
+        if(minRetweet) {
+          //get filtered collection
+          var filteredTweets = Tweets.filterByRetweet(minRetweet);
+          console.log('filteredTweets', filteredTweets);
+          //brute force: re-display whole list, wouldn't be practicle for long list, then would be nice to remove individual tweets
+          this.$("#tweet-list-box").empty();     
+          filteredTweets.each(this.addTweetView);  
+        }
+      },      
 
     });
 
