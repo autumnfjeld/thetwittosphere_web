@@ -15,12 +15,13 @@ define([
 
       events: {
        "keypress #screen-name-input":  "fetchTwitInfo",
-       "change #retweet-filter-input":  "updateTweetListView",
+       "click #go-btn": "fetchTwitInfo",
+       "keyup #retweet-filter-input":  "updateTweetListView",
        "change #picture-select": "updateTweetListView"
       },
 
       initialize: function() {
-        _.bindAll(this,  'render', 'initViews', 'addProfileView', 'addTweetView', 'updateTweetListView');
+        _.bindAll(this,  'render', 'initViews', 'addProfileView', 'addTweetView');
 
         this.input = this.$("#screen-name-input");
         this.filtersBox = this.$("#filters-box");
@@ -37,7 +38,7 @@ define([
       // },
 
       fetchTwitInfo: function(e) {
-        if (e.keyCode != 13) return;
+        if (e.type === 'keypress' && e.keyCode != 13) return;
         var screenName = this.input.val();
 
         Profile.fetch({
