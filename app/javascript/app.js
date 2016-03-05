@@ -61,7 +61,7 @@ define([
 
       addProfileView: function(profile){
         var profileId = profile.get('id');
-        if (this.$("#user-profile-box").attr("data-id") !== profileId){
+        if (this.$("#user-profile-box").data("id") !== profileId){
           this.$("#tweet-list-box").empty();  
           var profileView = new ProfileView({model: profile});
           this.$("#user-profile-box").append(profileView.render().el);

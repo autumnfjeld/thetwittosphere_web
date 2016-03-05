@@ -12,9 +12,10 @@ define(['jquery', 'underscore', 'backbone'],
       },
 
       render: function(){
-        // console.log('a tweet', this.model.toJSON());
-        $(this.el).html(this.template(this.model.toJSON()));
-        this.addImage(this.model.toJSON());
+        var model = this.model.toJSON();
+        if (!model.text) return this;      //avoid template Uncaught ReferenceError
+        $(this.el).html(this.template(model));
+        this.addImage(model);
         return this;
       },
 
