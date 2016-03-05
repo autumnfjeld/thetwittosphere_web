@@ -5,12 +5,19 @@ define(['underscore', 'backbone', 'tweets/tweet.model'],
   var TweetsCollection = Backbone.Collection.extend({
 
     // Reference to this collection's model.
-    model: Tweet,
+    model: Tweet,       
+
     url: "http://localhost:3000/api/usertimeline",
 
-    filterByRetweet: function (value) {  //{retween_min: integer , picture: boolean }
+    filter: function (minRetweets, hasPic) { 
+      // console.log('minRetweets', minRetweets, 'hasPic', hasPic, !hasPic);
+      var hasMedia, picFlag, rtCountFlag
       var results = this.models.filter(function(model){
-        return model.get('retweet_count') >= value;
+        if (hasPic) hasMedia = model.toJSON().entities.media ? true : false;
+        picFlag = !hasPic || (hasPic === 'nopic' && !hasMedia) || (hasPic === 'yespic' && hasMedia);
+        rtCountFlag = model.get('retweet_count') >= minRetweets;
+        // console.log('picFlag', picFlag, 'rtCountFlag', rtCountFlag);
+        return picFlag && rtCountFlag;
       })
       results = _.map( results, function( model ) { return model.toJSON()  } );
 
