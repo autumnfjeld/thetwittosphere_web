@@ -36,12 +36,14 @@ h1, h2 {
   font-size: 20px;
   text-align: center;
 }
+#filters-box {
+  display: none;
+}
 #picture-select {
   font-family: 'Slabo 27px', serif;  
   font-size: 20px;
   border:0;
   color: hsla(0,0%,0%, .80);
-
 }
 #picture-select option {
   font-family: 'Slabo 27px', serif;  

@@ -10,24 +10,25 @@ define([
   'profile/profile.view'
   ], function($, _, Backbone, Tweets, TweetView, Profile, ProfileView){
     var AppView = Backbone.View.extend({
-
-      // bind to existing app container
-      el: $("#app-container"),
+     
+      el: $("#app-container"),                       // bind to existing app container
 
       events: {
        "keypress #screen-name-input":  "fetchTwitInfo",
-       "change #retweet-filter-input":  "updateTweetView",
-       "change #picture-select": "updateTweetView"
+       "change #retweet-filter-input":  "updateTweetListView",
+       "change #picture-select": "updateTweetListView"
       },
 
       initialize: function() {
-        _.bindAll(this, 'render', 'addProfileView', 'addTweetView', 'updateTweetView');
+        _.bindAll(this,  'render', 'initViews', 'addProfileView', 'addTweetView', 'updateTweetListView');
 
         this.input = this.$("#screen-name-input");
+        this.filtersBox = this.$("#filters-box");
         this.filterByRetweet = this.$("#retweet-filter-input");
         this.filterByPicutre = this.$("#picture-select");
 
-        Tweets.bind('add', this.addTweetView);
+        Tweets.bind('add', this.addTweetView); //or this could be in TweetView.initialize as this.listenTo(this.model.....)
+        Tweets.listenToOnce(Tweets, 'add', this.initViews);
         Profile.bind('sync', this.addProfileView);
       },
 
@@ -44,8 +45,7 @@ define([
           error: errorProfile
         });
 
-        //this automatically populates Tweets collection/Tweet models
-        Tweets.fetch({
+        Tweets.fetch({                                  //automatically populates Tweets collection/Tweet models
           data: {screen_name: screenName},
           error:  errorTweets
         });
@@ -69,29 +69,28 @@ define([
       },
 
       addTweetView: function(tweet){
-        // this.$("#tweet-list-box").empty();  //temporary handling of repeat entried
         var tweetView = new TweetView({model: tweet});
         this.$("#tweet-list-box").append(tweetView.render().el);
       },
 
-      // Add all items in the **Todos** collection at once.
-      updateTweetView: function(e) {
-        // if (e.type === 'keypress' && e.keyCode != 13) return;        
-        var minRetweets = this.filterByRetweet.val() || 0,  //assume people are looking for more-than
+      initViews: function(){
+        console.log('initViews.  Tweets.length:', Tweets.length);
+        this.filtersBox.css({display: 'block'});
+      },
+
+      updateTweetListView: function() {  
+        var tweetList,
+            minRetweets = this.filterByRetweet.val() || 0,        //assume people are looking for more-than
             hasPicture = this.filterByPicutre.val();
         if (hasPicture === 'null') hasPicture = null;
-        console.log('updateTweetView:: minRetweets', minRetweets, 'hasPicture', hasPicture, typeof hasPicture);
-
+        console.log('updateTweetListView:: minRetweets', minRetweets, 'hasPicture', hasPicture, typeof hasPicture);
         if(minRetweets || hasPicture) {
-          //get filtered collection
-          var filteredTweets = Tweets.filter(minRetweets, hasPicture);
-          console.log('filteredTweets length:', filteredTweets.length);
-          console.log('filteredTweets', filteredTweets);
-          //brute force: re-display whole list, might not be practicle for long list, then would be nice to remove/add individual tweets
-          this.$("#tweet-list-box").empty();     
-          filteredTweets.each(this.addTweetView);  
-        }
-      },      
+          tweetList = Tweets.filter(minRetweets, hasPicture);     //get filtered collection
+          console.log('filteredTweets length:', tweetList.length);
+          this.$("#tweet-list-box").empty();                      //brute force: re-display whole list, might not be practicle for long list, then would be nice to remove/add individual tweets
+          tweetList.each(this.addTweetView);  
+        } 
+      }
 
     });
 
