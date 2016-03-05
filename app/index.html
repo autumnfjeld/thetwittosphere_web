@@ -20,10 +20,19 @@
       <h2> Get some tweets! </h2>
 
       <div id="screen-name-input-box">
-        <input id="screen-name-input" placeholder="Enter twitter username" type="text" />
-        <input id="retweet-filter-input" placeholder="Filter by # of retweets (optional)" type="number" />
+        <input type="text" id="screen-name-input" placeholder="Enter twitter username" value='autaut'/>
+        <h3> Refine tweet search </h3>
+        <input type="number" id="retweet-filter-input" placeholder="Filter by # of retweets (optional)" />
+        <div>
+          <label for="picture-select"> Tweets with/without picture </label>
+          <select name="picture-select" id="picture-select">
+            <option value="null" selected>all</option> 
+            <option value="yespic">with Picture</option>
+            <option value="nopic">without Picture</option>
+          </select>        
+       </div>
       </div>  
-      <div id="user-profile-box">
+      <div id="user-profile-box" data-id>
       </div>      
       <div id="tweet-list-box">
       </div>
