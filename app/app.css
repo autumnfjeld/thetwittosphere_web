@@ -26,17 +26,39 @@ h1, h2 {
   /*width: 400px;*/
 }
 
-#screen-name-input {
+#screen-name-input-box input {
   height: 50px;
   width: 300px;
+  margin: 10px;
   padding: 4px;
   border: 1px solid hsl(0, 0%, 80%);
   border-radius: 4px;
   font-size: 20px;
   text-align: center;
 }
+#filters-box {
+  display: none;
+}
+#picture-select {
+  font-family: 'Slabo 27px', serif;  
+  font-size: 20px;
+  border:0;
+  color: hsla(0,0%,0%, .80);
+}
+#picture-select option {
+  font-family: 'Slabo 27px', serif;  
+}
 
 #user-profile-box {
   margin: 20px 0;
   color: white;
+}
+
+.tweet-box {
+  margin: 10px 0;
+  padding: 8px;
+  border: 1px solid hsl(0, 0%, 80%);  
+}
+.tweet-text {
+  margin: 4px 0;
 }
