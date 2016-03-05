@@ -1,49 +1,102 @@
 /*//Start some basic styling, come back for css structure/user of preprocessor etc.*/
 @import url(https://fonts.googleapis.com/css?family=Slabo+27px);
 * {
-  font-family: 'Slabo 27px', serif;
-  letter-spacing: .04em;
+  box-sizing: border-box;
+  font-family: Tahoma,Verdana,Segoe,sans-serif
 }
 
 body {
-  background-color: hsl(284, 28%, 38%);
+  background-color: hsl(216, 29%, 38%);
+}
+/* Browser Style Overwrite */
+h1, h2, h3 {
+  font-family: 'Slabo 27px', serif;  
+  letter-spacing: .04em;
+  color: hsl(200, 50%, 50%);
+}
+h1 {
+  text-align: center;
+}
+h2 {
+  font-size:22px;
+}
+input, select {
+  background: hsl(243, 20%, 83%)
+}
+input, button {
+  padding:4px;
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 4px;
+  font-size: 20px;  
+}
+/*hide spinners on number input*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
 }
 
 #app-container {
-  width: 500px;
-  margin: 15% auto 0; 
-}
-
-h1, h2 {
-  margin:;
-  text-align: center;
-  color: hsl(200, 50%, 50%);
+  width: 600px;
+  margin: 30px auto 0; 
 }
 
 #screen-name-input-box {
-  margin-top: 30px;
+  margin: 30px 0 36px;
   text-align: center;
   /*width: 400px;*/
 }
 
-#screen-name-input-box input {
+#screen-name-input-box input,
+#screen-name-input-box button {
+  display: inline-block;
   height: 50px;
-  width: 300px;
-  margin: 10px;
-  padding: 4px;
-  border: 1px solid hsl(0, 0%, 80%);
-  border-radius: 4px;
-  font-size: 20px;
+  margin: 10px 5px;
   text-align: center;
+}
+#screen-name-input-box input {
+  width: 300px;
+  /*padding: 4px;*/
+}
+#screen-name-input-box button {
+  width: 50px;
 }
 #filters-box {
   display: none;
 }
+#filters-box h2 {
+  margin:0;
+  text-align: left;
+}
+#filters-box label {
+  font-size: 18px;
+}
+.input-box {
+  display: inline-block;
+/*  display:flex;
+  flex-direction: row;
+  justify-content: space-between;*/
+  align-content: flex-end;
+  margin-bottom: 8px;
+}
+.input-box:first-child {
+  margin-right: 6px;
+}
+.input-box label {
+  margin-right: 8px;
+  padding-top: 6px;
+}
+#retweet-filter-input {
+  width: 46px;
+  padding-top: 1px;
+  text-align: center;
+}
 #picture-select {
+  height: 32px;
   font-family: 'Slabo 27px', serif;  
   font-size: 20px;
   border:0;
-  color: hsla(0,0%,0%, .80);
+  color: hsla(0,0%,0%, .60);
 }
 #picture-select option {
   font-family: 'Slabo 27px', serif;  
