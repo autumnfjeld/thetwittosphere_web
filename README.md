@@ -7,6 +7,7 @@ A web app that allow users to search for a twitter handle (screen_name) and retu
 * UI feeback if twitter handle not found
 * Add directions for initial view
 * CouldShouldDos
+  * Make sure collection is reset with each new user
   * Make links in tweets clickable
   * Gulp/Grunt with autoprefixer
   * Domino like or cascade animation of appearing tweet list
