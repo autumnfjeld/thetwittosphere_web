@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <title></title>
-    <meta name="The Twittosphere" content="">
-    <meta name="Autumn Fjeld" content="">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="app.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <meta name='The Twittosphere' content=''>
+    <meta name='Autumn Fjeld' content=''>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <link rel='stylesheet' href='app.css'>
+    <link href='https://fonts.googleapis.com/icon?family=Material+Icons'
+      rel='stylesheet'>
     <!-- data-main attribute tells require.js to load scripts/main.js after require.js loads. -->    
-    <script data-main="javascript/main" src="../node_modules/requirejs/require.js"> </script>    
+    <script data-main='javascript/main' src='../node_modules/requirejs/require.js'> </script>    
   </head>
 
   <body>
 
-    <div id="app-container">
+    <div id='app-container'>
       <h1> Twittosphere </h1>
-      <h2> Get some tweets! </h2>
+      <!-- <h2> Get some tweets! </h2> -->
 
-      <div id="screen-name-input-box">
-        <input type="text" id="screen-name-input" placeholder="Enter twitter username" value='autaut'/>
+      <div id='screen-name-input-box'>
+        <input type='text' id='screen-name-input' placeholder='Enter a twitter username' value='autaut'/>
+        <button type='button' id='go-btn' > Go </button>
       </div>
-      <div id="filters-box">
-        <h3> Refine tweet search </h3>
-        <input type="number" id="retweet-filter-input" placeholder="Filter by # of retweets (optional)" />
-        <div>
-          <label for="picture-select"> Tweets with/without picture </label>
-          <select name="picture-select" id="picture-select">
-            <option value="null" selected>all</option> 
-            <option value="yespic">with Picture</option>
-            <option value="nopic">without Picture</option>
+      <div id='user-profile-box' data-id>
+      </div>      
+      <div id='filters-box'>
+        <h2> Filter tweets </h2>
+        <div class='input-box' style='margin: 0 14px 0 30px'>
+          <label for='rewteet-filter-input'> Minimum retweets </label>        
+          <input type='number' name='rewteet-filter-input' id='retweet-filter-input'/>
+        </div>
+        <div class='input-box'>
+          <label for='picture-select'> With/without picture </label>
+          <select name='picture-select' id='picture-select'>
+            <option value='null' selected>   no preference</option> 
+            <option value='yespic'>with picture</option>
+            <option value='nopic'>without picture</option>
           </select>        
        </div>
       </div>  
-      <div id="user-profile-box" data-id>
-      </div>      
-      <div id="tweet-list-box">
+      <div id='tweet-list-box'>
       </div>
     </div> 
 
