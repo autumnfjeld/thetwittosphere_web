@@ -2,7 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Slabo+27px);
 * {
   box-sizing: border-box;
-  font-family: Tahoma,Verdana,Segoe,sans-serif
+  font-family: Tahoma,Verdana,Segoe,sans-serif;
 }
 
 body {
@@ -19,6 +19,9 @@ h1 {
 }
 h2 {
   font-size:22px;
+}
+p, label {
+   font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 }
 input, select {
   background: hsl(243, 20%, 83%)
@@ -74,46 +77,12 @@ input::-webkit-inner-spin-button {
   font-size: 20px;
 }
 #profile {
-    position: relative;
-    display:inline-block;
-    min-width:380px;
-    max-width:500px;
-    padding: 40px;
-    text-align: center;
-    color: #333;
-    border-radius: 240px / 140px;
-}
-#profile, #profile:before, #profile:after {
-    border: 5px solid hsl(252, 3%, 62%);
-}
-
-#profile:before{
-    display: block;
-    content: "";
-    position: absolute;
-    z-index: 10;
-    bottom: -40px;
-    right: 70px;
-    width: 50px;
-    height: 50px;
-    /*background: #fff;*/
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
-}
-#profile:after {
-    display: block;
-    content: "";
-    position: absolute;
-    z-index: 10;
-    bottom: -52px;
-    right: 60px;
-    width: 25px;
-    height: 25px;
-    /*background: #fff;*/
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    border-radius: 25px;
+  position: relative;
+  padding: 40px;
+  border: 2px solid hsl(252, 3%, 62%);
+  text-align: center;
+  color: #333;
+  border-radius:  4px;
 }
 
 /***** Filters Box ******/
@@ -125,7 +94,7 @@ input::-webkit-inner-spin-button {
   text-align: left;
 }
 #filters-box label {
-  font-size: 18px;
+  font-size: 16px;
 }
 .input-box {
   display: inline-block;
@@ -149,23 +118,42 @@ input::-webkit-inner-spin-button {
 }
 #picture-select {
   height: 32px;
-  font-family: 'Slabo 27px', serif;  
-  font-size: 20px;
+  font-size: 16px;
   border:0;
   color: hsla(0,0%,0%, .60);
 }
 #picture-select option {
-  font-family: Tahoma,Verdana,Segoe,sans-serif
+  font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 }
-
-
 
 /****** Tweets ******/
+#tweet-list-box {
+  margin-top: 20px;
+  /*border: 1px solid hsl(0, 0%, 80%);  */
+}
+.tweet-box:first-child {
+  border-top: 1px solid hsl(0, 0%, 60%);
+}
 .tweet-box {
-  margin: 10px 0;
-  padding: 8px;
-  border: 1px solid hsl(0, 0%, 80%);  
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+  align-items: center;
+  /*margin: 10px 0;*/
+  padding: 10px 8px;
+  border-bottom: 1px solid hsl(0, 0%, 60%);  
+}
+.tweet-box p {
+  margin: 4px 0;
+  font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+}
+.tweet-date {
+  color: hsl(0,0%,0%);
 }
 .tweet-text {
-  margin: 4px 0;
+  color: hsl(0,0%,80%);
+}
+.tweet-img {
+  max-height: 50px;
+  padding-left: 10px;
 }
