@@ -98,7 +98,6 @@ define([
         var tweetList,
             minRetweets = this.filterByRetweet.val() || 0,        //assume people are looking for more-than
             hasPicture = this.filterByPicutre.val();
-        if (hasPicture === 'null') hasPicture = null;
         console.log('updateTweetListView:: minRetweets', minRetweets, 'hasPicture', hasPicture, typeof hasPicture);
         if(minRetweets || hasPicture) {
           tweetList = Tweets.filter(minRetweets, hasPicture);     //get filtered collection

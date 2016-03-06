@@ -10,6 +10,7 @@ define(['underscore', 'backbone', 'tweets/tweet.model'],
     url: "http://localhost:3000/api/usertimeline",
 
     filter: function (minRetweets, hasPic) { 
+      if (hasPic === 'null') hasPic = null;
       // console.log('minRetweets', minRetweets, 'hasPic', hasPic, !hasPic);
       var hasMedia, picFlag, rtCountFlag
       var results = this.models.filter(function(model){
@@ -28,3 +29,5 @@ define(['underscore', 'backbone', 'tweets/tweet.model'],
 
   return new TweetsCollection;
 });
+
+
