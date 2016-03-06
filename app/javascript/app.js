@@ -77,6 +77,11 @@ define([
       initViews: function(){
         console.log('initViews.  Tweets.length:', Tweets.length);
         this.filtersBox.css({display: 'block'});
+        this.$("#info-box").remove();  //akward transition, need coordinating hide show w/ incoming elements
+        // this.$("#info-box").hide(100, function(){
+        //   $(this).remove();
+        // });
+
       },
 
       updateTweetListView: function() {  

@@ -38,7 +38,9 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0; 
 }
-
+/*note: feels like overuse of ids, not sure if this is standard with jquery
+* seems speed considerations favor using ids
+* normally would not use ids so liberally (in angular development)*/;
 #app-container {
   width: 600px;
   margin: 30px auto 0; 
@@ -61,6 +63,11 @@ input::-webkit-inner-spin-button {
 }
 #screen-name-input-box button {
   width: 50px;
+}
+#info-box {
+  text-align: center;
+  font-size: 24px;
+  color: hsl(0,0%,80%);
 }
 
 /***** Profile Data *****/
