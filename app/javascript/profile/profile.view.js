@@ -4,16 +4,11 @@ define(['jquery', 'underscore', 'backbone'],
 
       el: $("#user-profile-box"),
 
-      //basic test to get api data to view
-      template: _.template( "<p> <%= name %>  &nbsp; @<%= screen_name %> </p>" +
-                            "<p> <%= description %> </p> " +
-                            "<p> <%= location %> </p> "),
-      // template: _.template( "<table>" +
-      //                         "<tr>" +
-      //                           "<td> Name </td> <td> <%= name %> </td>  </tr>"+
-      //                           "<tr> <td>  </td> <td> @<%= screen_name %> </td>" +
-      //                         "</tr"+
-      //                       "</table>" ),
+      template: _.template( "<div id='profile'>" +
+                              "<p> <%= name %>  &nbsp; @<%= screen_name %> </p>" +
+                              "<p> <%= description %> </p> " +
+                              "<p> <%= location %> </p> " +
+                            "</div>"),
 
       initialize: function(){
         _.bindAll(this, 'render');
@@ -22,18 +17,24 @@ define(['jquery', 'underscore', 'backbone'],
 
       render: function(){
         var model = this.model.toJSON();
+        console.log('profile', model);
         if (!model.screen_name) return this;   //avoid template Uncaught ReferenceError
-        var image = this.model.get('profile_background_image_url_https') || null;
+        var imageUrl = 'url(' + this.model.get('profile_background_image_url_https') || null + ')';
 
         $(this.el).html(this.template(model));
         $(this.el).data("id", this.model.get('id'));
  
         //experiment with personalized styling
-        if (image) {
-          this.$el.css({
-            'background-image': 'url(' + image + ')',
-             'text-shadow': '0px 0px 10px hsl(0,0%,40%)'
+        if (imageUrl) {
+          this.$("#profile").css({
+            'background-image': imageUrl,
+            'background-size': 'contain',
+             'font-weight': 'bold',
+             'text-shadow': '0px 0px 1px hsl(0,100%,100%), 0px 0px 1px hsl(0,100%,100%)'
           });
+          var rule = "background-image:" + imageUrl +");background-size:cover;";
+          document.styleSheets[0].addRule('#profile:before', rule);
+          document.styleSheets[0].addRule('#profile:after', rule);
         }
 
         return this;

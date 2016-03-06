@@ -8,7 +8,7 @@
 body {
   background-color: hsl(216, 29%, 38%);
 }
-/* Browser Style Overwrite */
+/****** Browser Default Style Overwrite ******/
 h1, h2, h3 {
   font-family: 'Slabo 27px', serif;  
   letter-spacing: .04em;
@@ -61,6 +61,62 @@ input::-webkit-inner-spin-button {
 #screen-name-input-box button {
   width: 50px;
 }
+
+/***** Profile Data *****/
+#user-profile-box {
+  position:relative;
+  margin: 0px 0 50px;
+  text-align: center;
+  color: white;
+}
+#user-profile-box p {
+  margin:0;
+  font-size: 20px;
+}
+#profile {
+    position: relative;
+    display:inline-block;
+    min-width:380px;
+    max-width:500px;
+    padding: 40px;
+    text-align: center;
+    color: #333;
+    border-radius: 240px / 140px;
+}
+#profile, #profile:before, #profile:after {
+    border: 5px solid hsl(252, 3%, 62%);
+}
+
+#profile:before{
+    display: block;
+    content: "";
+    position: absolute;
+    z-index: 10;
+    bottom: -40px;
+    right: 70px;
+    width: 50px;
+    height: 50px;
+    /*background: #fff;*/
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+}
+#profile:after {
+    display: block;
+    content: "";
+    position: absolute;
+    z-index: 10;
+    bottom: -52px;
+    right: 60px;
+    width: 25px;
+    height: 25px;
+    /*background: #fff;*/
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+}
+
+/***** Filters Box ******/
 #filters-box {
   display: none;
 }
@@ -99,14 +155,12 @@ input::-webkit-inner-spin-button {
   color: hsla(0,0%,0%, .60);
 }
 #picture-select option {
-  font-family: 'Slabo 27px', serif;  
+  font-family: Tahoma,Verdana,Segoe,sans-serif
 }
 
-#user-profile-box {
-  margin: 20px 0;
-  color: white;
-}
 
+
+/****** Tweets ******/
 .tweet-box {
   margin: 10px 0;
   padding: 8px;
