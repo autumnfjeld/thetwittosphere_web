@@ -4,7 +4,8 @@ define(['jquery', 'underscore', 'backbone'],
 
       el: $("#user-profile-box"),
 
-      template: _.template( "<div id='profile'>" +
+      //should add profile_image
+      template: _.template( "<div id='profile-text'>" +
                               "<p> <%= name %>  &nbsp; @<%= screen_name %> </p>" +
                               "<p> <%= description %> </p> " +
                               "<p> <%= location %> </p> " +
@@ -22,19 +23,14 @@ define(['jquery', 'underscore', 'backbone'],
         var imageUrl = 'url(' + this.model.get('profile_background_image_url_https') || null + ')';
 
         $(this.el).html(this.template(model));
+        this.$el.css({'border': '2px solid hsl(252, 3%, 62%)'});
         $(this.el).data("id", this.model.get('id'));
  
-        //experiment with personalized styling
         if (imageUrl) {
-          this.$("#profile").css({
+          this.$el.css({
             'background-image': imageUrl,
-            'background-size': 'contain',
-             'font-weight': 'bold',
-             'text-shadow': '0px 0px 1px hsl(0,100%,100%), 0px 0px 1px hsl(0,100%,100%)'
+            'background-size': 'contain'
           });
-          var rule = "background-image:" + imageUrl +");background-size:cover;";
-          document.styleSheets[0].addRule('#profile:before', rule);
-          document.styleSheets[0].addRule('#profile:after', rule);
         }
 
         return this;

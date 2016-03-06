@@ -75,15 +75,19 @@ input::-webkit-inner-spin-button {
 #user-profile-box p {
   margin:0;
   font-size: 20px;
+  color: white;
 }
-#profile {
-  position: relative;
-  padding: 40px;
-  border: 2px solid hsl(252, 3%, 62%);
+#profile-text {
+  /*position: relative;*/
+  display: inline-block;
+  margin:40px;
+  padding: 8px;
   text-align: center;
+  background-color:hsla(0,0%,0%, .2);
   color: #333;
-  border-radius:  4px;
+  border-radius: 10px;
 }
+
 
 /***** Filters Box ******/
 #filters-box {
