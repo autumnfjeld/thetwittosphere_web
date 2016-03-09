@@ -5,23 +5,24 @@
     <title></title>
     <meta name='The Twittosphere' content=''>
     <meta name='Autumn Fjeld' content=''>
-    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <meta name='viewport' content='width=device-width'>
     <link rel='stylesheet' href='app.css'>
-    <link href='https://fonts.googleapis.com/icon?family=Material+Icons'
-      rel='stylesheet'>
-    <!-- data-main attribute tells require.js to load scripts/main.js after require.js loads. -->    
-    <script data-main='javascript/main' src='../node_modules/requirejs/require.js'> </script>    
+    <!-- data-main attribute  tells require.js to load scripts/main.js after require.js loads. -->    
+    <script data-main='javascript/main' src='vendor/require.js'> </script>    
   </head>
 
   <body>
 
     <div id='app-container'>
       <h1> Twittosphere </h1>
-      <!-- <h2> Get some tweets! </h2> -->
-
       <div id='screen-name-input-box'>
-        <input type='text' id='screen-name-input' placeholder='Enter a twitter username' value='autaut'/>
+        <input type='text' id='screen-name-input' placeholder='Enter a twitter username'/>
         <button type='button' id='go-btn' > Go </button>
+        <p class='msg-not-found'> That user was not found in the Twittosphere. </p>
+      </div>
+      <div id='info-box'>
+        <p> A portal to the twittosphere.</p>
+        <p>  Get recent tweets from any twitter user. </p>
       </div>
       <div id='user-profile-box' data-id>
       </div>      

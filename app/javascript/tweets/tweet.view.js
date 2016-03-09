@@ -9,12 +9,6 @@ define(['jquery', 'underscore', 'backbone'],
                               "<p class='tweet-text'> <%= text %> &nbsp; rt:<%= retweet_count %> </p>" +
                             "</div"),
 
-
-      initialize: function(){
-        _.bindAll(this, 'render');
-        this.model.view = this;
-      },
-
       render: function(){
         var model = this.model.toJSON();
         if (!model.text) return this;      //avoid template Uncaught ReferenceError
