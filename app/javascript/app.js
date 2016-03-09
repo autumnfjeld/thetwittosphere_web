@@ -37,6 +37,8 @@ define([
 
       fetchTwitInfo: function(e) {
         if (e.type === 'keypress' && e.keyCode != 13) return;
+        if (Tweets.length) this.clearTweetCollectionAndView();
+        console.log(Tweets.length)
         var screenName = this.input.val(),
             self = this;
 
@@ -65,10 +67,9 @@ define([
 
       addProfileView: function(profile){
         var profileId = profile.get('id');
-        if (this.$("#user-profile-box").data("id") !== profileId){
-          this.$("#tweet-list-box").empty();  
+        if (this.userProfile.data("id") !== profileId){
           var profileView = new ProfileView({model: profile});
-          this.$("#user-profile-box").append(profileView.render().el);
+          this.userProfile.append(profileView.render().el);
         }
       },
 
@@ -76,8 +77,7 @@ define([
         var $msg = this.$(".msg-not-found"),
             self = this;;
         $msg.css({'display': 'block'});
-        // this.userProfile.empty();            //todo: reset display when user not found
-        // this.tweetList.empty();
+        // this.userProfile.empty();            //todo: reset display when user not found (styling & filterBox need thought)
         setTimeout(function() {
           $msg.css({'display': 'none'});
         }, 3000);   
@@ -85,7 +85,7 @@ define([
 
       addTweetView: function(tweet){
         var tweetView = new TweetView({model: tweet});
-        this.$("#tweet-list-box").append(tweetView.render().el);
+        this.tweetList.append(tweetView.render().el);
       },
 
       initViews: function(){
@@ -105,6 +105,12 @@ define([
           this.tweetList.empty();                      //brute force: re-display whole list, might not be practicle for long list, then would be nice to remove/add individual tweets
           tweetList.each(this.addTweetView);  
         } 
+      },
+
+      clearTweetCollectionAndView: function(){
+        Tweets.reset();
+        this.tweetList.empty();
+        // this.filtersBox.css({display: 'none'});  //need a better way to handle tweet box
       }
 
     });
