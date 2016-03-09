@@ -9,6 +9,16 @@ define(['underscore', 'backbone', 'tweets/tweet.model'],
 
     url: "https://thetwittosphere-api.herokuapp.com/api/usertimeline",
 
+    parse: function(response){
+      console.log('TweetsCollection.parse: response', response);
+      //this assumes there is either a statusCode or an array of tweets
+      if (response.statusCode){
+        return;
+      } else {
+        return response;
+      } 
+    },
+
     filter: function (minRetweets, hasPic) { 
       if (hasPic === 'null') hasPic = null;
       // console.log('minRetweets', minRetweets, 'hasPic', hasPic, !hasPic);
