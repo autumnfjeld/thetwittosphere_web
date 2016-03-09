@@ -7,7 +7,7 @@ define(['underscore', 'backbone', 'tweets/tweet.model'],
     // Reference to this collection's model.
     model: Tweet,       
 
-    url: "http://localhost:3000/api/usertimeline",
+    url: "https://thetwittosphere-api.herokuapp.com/api/usertimeline",
 
     filter: function (minRetweets, hasPic) { 
       if (hasPic === 'null') hasPic = null;
